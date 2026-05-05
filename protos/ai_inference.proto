@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package aiinference.v1;
+
+option go_package = "aiinference/v1";
+
+service AIInference {
+  // Task 2: Unary RPC — Sentiment Analysis
+  rpc AnalyzeSentiment(SentimentRequest) returns (SentimentResponse);
+
+  // Task 3: Server-streaming RPC — Real-time token generation
+  rpc GenerateStream(GenerateRequest) returns (stream GenerateStreamResponse);
+
+  // Task 4: Client-streaming RPC — Batch summarization
+  rpc SummarizeStream(stream SummarizeChunk) returns (SummarizeResponse);
+
+  // Task 5: Bidirectional streaming RPC — Live chat assistant
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+enum SentimentLabel {
+  SENTIMENT_LABEL_UNSPECIFIED = 0;
+  POSITIVE = 1;
+  NEGATIVE = 2;
+  NEUTRAL = 3;
+  MIXED = 4;
+}
+
+message SentimentRequest {
+  string text = 1;
+}
+
+message SentimentResponse {
+  SentimentLabel label = 1;
+  float confidence = 2;
+  string model = 3;
+}
+
+message GenerateRequest {
+  string prompt = 1;
+  // Optional: model name (server may ignore)
+  string model = 2;
+}
+
+message GenerateStreamResponse {
+  string token = 1;
+}
+
+message SummarizeChunk {
+  string text = 1;
+}
+
+message SummarizeResponse {
+  string summary = 1;
+  string model = 2;
+}
+
+message ChatMessage {
+  // A stable conversation id lets the server keep history.
+  string conversation_id = 1;
+  string role = 2; // "user" or "assistant"
+  string text = 3;
+}

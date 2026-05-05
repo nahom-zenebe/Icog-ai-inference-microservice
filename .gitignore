@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.venv/
+.env
+server/*_pb2.py
+server/*_pb2_grpc.py
+client/*_pb2.py
+client/*_pb2_grpc.py
