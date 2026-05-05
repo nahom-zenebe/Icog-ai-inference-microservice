@@ -129,6 +129,3 @@ Where this project mirrors Hamilton:
 - Interceptor enforces auth at the “front door” (admission control conceptually)
 - Nginx + multiple replicas demonstrates redundancy and scaling via commodity instances
 
----
-
-If you want, I can also add `grpcurl` examples in the README for easier debugging.
