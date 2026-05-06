@@ -30,7 +30,7 @@ class AIInferenceServicer(ai_inference_pb2_grpc.AIInferenceServicer):
     def AnalyzeSentiment(
         self, request: ai_inference_pb2.SentimentRequest, context: grpc.ServicerContext
     ) -> ai_inference_pb2.SentimentResponse:
-        # Bonus: server intentionally sleeps longer than client deadline.
+       
         delay = float(os.environ.get("SENTIMENT_DELAY_SECONDS", "3"))
         if delay > 0:
             time.sleep(delay)

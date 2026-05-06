@@ -4,6 +4,7 @@ import time
 from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Optional
+from google import genai 
 
 
 @dataclass
@@ -17,12 +18,11 @@ class AIBackend:
 
     def __init__(self) -> None:
         self._api_key = os.environ.get("GEMINI_API_KEY")
-        self._model = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
+        self._model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
         self._client = None
         if self._api_key:
-            try:
-                from google import genai  
+            try: 
 
                 self._client = genai.Client(api_key=self._api_key)
             except Exception:
