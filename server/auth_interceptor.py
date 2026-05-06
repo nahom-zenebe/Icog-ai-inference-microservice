@@ -42,7 +42,6 @@ class AuthInterceptor(grpc.ServerInterceptor):
         if authorized():
             return handler
 
-        # Wrap based on handler type
         if handler.unary_unary:
             return grpc.unary_unary_rpc_method_handler(
                 lambda req, ctx: deny(req, ctx),

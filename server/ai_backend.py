@@ -14,10 +14,6 @@ class SentimentResult:
 
 
 class AIBackend:
-    """Gemini-backed AI wrapper with a safe local fallback.
-
-    This keeps the microservice runnable even without external credentials.
-    """
 
     def __init__(self) -> None:
         self._api_key = os.environ.get("GEMINI_API_KEY")
@@ -26,11 +22,11 @@ class AIBackend:
         self._client = None
         if self._api_key:
             try:
-                from google import genai  # type: ignore
+                from google import genai  
 
                 self._client = genai.Client(api_key=self._api_key)
             except Exception:
-                # Fall back silently; server should still work.
+              
                 self._client = None
 
     @property
@@ -54,7 +50,7 @@ class AIBackend:
         try:
             resp = self._client.models.generate_content(model=self._model, contents=prompt)
             raw = getattr(resp, "text", "") or ""
-            # Extract { ... } if model adds extra text.
+           
             m = re.search(r"\{.*\}", raw, flags=re.DOTALL)
             payload = m.group(0) if m else raw
             import json
@@ -101,7 +97,7 @@ class AIBackend:
         if self._client is None:
             return self._mock_chat(history, user_text)
 
-        # Flatten into a simple prompt to avoid SDK-specific chat session APIs.
+       
         convo = []
         for role, text in history[-20:]:
             convo.append(f"{role.upper()}: {text}")
@@ -115,9 +111,9 @@ class AIBackend:
         except Exception:
             return self._mock_chat(history, user_text)
 
-    # -----------------
+
     # Local fallback
-    # -----------------
+
 
     def _mock_sentiment(self, text: str) -> SentimentResult:
         t = text.lower()

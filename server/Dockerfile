@@ -8,7 +8,6 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY protos /app/protos
 COPY server /app/server
 
-# Generate gRPC stubs inside the image
 RUN python -m grpc_tools.protoc -I/app/protos \
     --python_out=/app/server --grpc_python_out=/app/server \
     /app/protos/ai_inference.proto

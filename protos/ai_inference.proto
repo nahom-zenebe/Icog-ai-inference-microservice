@@ -38,7 +38,6 @@ message SentimentResponse {
 
 message GenerateRequest {
   string prompt = 1;
-  // Optional: model name (server may ignore)
   string model = 2;
 }
 
@@ -56,8 +55,7 @@ message SummarizeResponse {
 }
 
 message ChatMessage {
-  // A stable conversation id lets the server keep history.
   string conversation_id = 1;
-  string role = 2; // "user" or "assistant"
+  string role = 2; 
   string text = 3;
 }

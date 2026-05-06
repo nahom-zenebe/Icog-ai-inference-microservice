@@ -17,7 +17,7 @@ services:
       dockerfile: server/Dockerfile
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - AUTH_BEARER_TOKEN=${AUTH_BEARER_TOKEN:-my-secret-key}
+      - AUTH_BEARER_TOKEN=12345678
       - SERVER_ID=server1
     expose:
       - "50051"
