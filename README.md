@@ -1,4 +1,4 @@
-# AI Inference Microservice (gRPC + Gemini + Nginx L7 LB)
+# AI Inference Microservice
 
 This repo implements an AI inference microservice using **gRPC** with **all four communication models** (unary, server-streaming, client-streaming, bidirectional streaming), backed by **Gemini** (with a safe local mock fallback), and deployed behind an **Nginx Layer-7 HTTP/2 gRPC load balancer**.
 
@@ -13,10 +13,10 @@ This repo implements an AI inference microservice using **gRPC** with **all four
 
 ## Prereqs
 
-- Docker Desktop (for the full LB mesh)
-- Python 3.11+ (for local dev)
+- Docker Desktop 
+- Python 3.11+
 
-## Quickstart (full “production-like” mesh)
+## Quickstart 
 
 1. Create env file:
    - `cp .env.example .env`
