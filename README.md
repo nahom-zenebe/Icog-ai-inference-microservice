@@ -103,9 +103,9 @@ Nginx is configured for HTTP/2 and gRPC proxying:
   - `grpc_pass grpc://grpc_backends;` (round-robin across 3 backends)
 
 ## Screenshot 
-<img width="352" height="120" alt="screenshots2" src="https://github.com/user-attachments/assets/c2bf8c2d-668a-4c19-8246-188581323e07" />
-<img width="681" height="422" alt="screenshots1" src="https://github.com/user-attachments/assets/7777f431-3289-4097-b7d7-0a45476ace97" />
-<img width="705" height="303" alt="screenshots" src="https://github.com/user-attachments/assets/4ebd9a70-ddbc-450d-bc9d-17225d8fe693" />
+<img width="1172" height="357" alt="Screenshot 2026-05-06 at 5 02 36 PM" src="https://github.com/user-attachments/assets/88ec798f-3c34-474a-96e8-a23be60ab9a8" />
+<img width="1459" height="639" alt="Screenshot 2026-05-06 at 4 37 08 PM" src="https://github.com/user-attachments/assets/c663bea8-9d8d-418c-91ee-9724c024a617" />
+<img width="1166" height="522" alt="Screenshot 2026-05-06 at 5 03 18 PM" src="https://github.com/user-attachments/assets/bcb675d9-2ddf-410d-9432-d77cd04b069a" />
 
 
 
