@@ -102,30 +102,12 @@ Nginx is configured for HTTP/2 and gRPC proxying:
   - `listen 8080 http2;`
   - `grpc_pass grpc://grpc_backends;` (round-robin across 3 backends)
 
-## Screenshot requirement
+## Screenshot 
+<img width="352" height="120" alt="screenshots2" src="https://github.com/user-attachments/assets/c2bf8c2d-668a-4c19-8246-188581323e07" />
+<img width="681" height="422" alt="screenshots1" src="https://github.com/user-attachments/assets/7777f431-3289-4097-b7d7-0a45476ace97" />
+<img width="705" height="303" alt="screenshots" src="https://github.com/user-attachments/assets/4ebd9a70-ddbc-450d-bc9d-17225d8fe693" />
 
-After you run the CLI successfully against Nginx, take a terminal screenshot and add it to your submission (e.g., `docs/screenshot.png`).
 
-## Paper reading: “On Designing and Deploying Internet-Scale Services” (Hamilton)
 
-High-level takeaways (how it connects to this project):
 
-- **Operations-friendly design beats heroic ops**: Hamilton argues many ops problems originate in design; services should self-detect and self-recover from common failures.
-- **Expect failure**: components fail frequently at scale; recovery paths must be simple and exercised.
-- **Keep it simple & automate everything**: simplicity enables automation; automation enables high system-to-admin ratios.
-- **Dependency management matters**: avoid many small dependencies; depend only when the dependency is substantial or must be centralized, and implement inter-service monitoring/alerting.
-- **Graceful degradation + admission control**: under overload/DOS or spikes, delivering a reduced-but-working service is better than total collapse; use admission control at the front door and also at internal boundaries.
-
-Buzzwords (plain-English definitions):
-
-- **Operations-friendly**: a service that can be run with minimal manual intervention; it detects and recovers from common failures automatically.
-- **Design for failure**: assume machines, networks, and dependencies will break; build redundancy, timeouts, and recovery as first-class features.
-- **Crash-only software**: a style where components are designed to fail/stop and restart cleanly; the failure path is the normal path.
-- **Admission control / throttling**: refusing or delaying work when overloaded to avoid thrashing; often implemented via rate limits, queues, and backpressure.
-- **Graceful degradation**: under stress, return partial results or reduced quality instead of hard failing for everyone.
-
-Where this project mirrors Hamilton:
-- gRPC deadlines + server sleep demo shows timeouts and failure-handling behavior
-- Interceptor enforces auth at the “front door” (admission control conceptually)
-- Nginx + multiple replicas demonstrates redundancy and scaling via commodity instances
 
